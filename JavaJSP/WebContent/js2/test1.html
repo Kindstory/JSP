@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chris</title>
+<script type = "text/javascript">
+ // 이벤트 : 브라우저에서 발생하는 모든 동작(키보드입력, 마우스)
+ // 이벤트 리스너가 항상 이벤트가 발생하길 기다리고 있음. 기다리고 있다가 
+ // 이벤트 핸들러에게 넘겨주고 수행하게 함.
+ // 이벤트 핸들러 : 해당 이벤트 발생시 수행하는 동작
+ 		
+	function fun(){
+ 			alert('실행');  // 이 안에 로직은 얼마든지 바뀔수 있으니까 ㅇㅇ 응용하면 됨.
+ 		} 		
+
+
+// Browser Object Model(브라우저 객체 모델) : 브라우저에 내장되어 있는 객체
+// 브라우저로 치면 화면이 document인데, 이 document를 제외한 모든 객체가 BOM에 포함됨
+// 계층적 구조
+// [window, document, screen, location, history .....]
+		
+		// window객체
+		// window.aaa();
+
+		// window 객체 정보는 생략가능!
+ 		// window.alert("TEST");   
+	 	// alert("TEST");
+		// 두개 똑같음
+		
+// 아무 객체 없이 바로 소환 되면 window객체 안에 포함되어 있을 가능성이 높다.
+
+ 		//window.open("url주소", "이름", "옵션");
+ 		//window.open("http://www.naver.com", "", ""); // 이름 정보는 잘 안줌.
+ 		//window.open("http://www.naver.com", "", "width=500, height=500"); 
+		// 광고 팝업창이 이런식으로 만들어짐.
+		// 요즘은 이런 팝업창 많이 안쓰긴 함 
+		// 요즘은 배경이 좀 어두워지면서 팝업창이 뜨는거 많이 씀
+		
+		function myOpen(){
+			window.open("http://www.naver.com", " ", "width=500, height=500, top=300, left=700");
+		}
+		
+// 		  	 화면의 위치를 좌표로 나타내면 왼쪽 상단이 0,0 임 기본값 
+// 		  	  해상도 1920 * 1080 을 기준으로 중간에 배치 
+// 		  	  위에서 300 내려오고 왼쪽에서 700 땡김.
+		 
+
+// 		window.close(); 
+		
+// 		스크립트 언어라 순서대로 실행되니까, 네이버 창이 열렸다가 close명령어에 의해 닫혀버림. 
+// 		근데 fun() 함수도 실행 안되네 ㅇㅇ
+		
+  		function openTest(){
+  			window.open("test1-1.html", " ", " ");
+  		}
+
+		// 페이지 객체 제목속성(변수)
+
+		alert(window.document.title);
+		
+		window.document.title = "아이티윌";  
+		// window.document.title 이 자체가 변수니까 변수 바꿔줌.
+		
+		// (속성) - location (여기선 사이트 주소 url이나 파일명이 location임)
+		// test1 실행시 test1-1 페이지 실행
+		
+//  		window.document.location = "test1-1.html";
+		
+</script>
+</head>
+<body>
+	<h1>test1.html</h1>
+	
+	
+<!--  <input type="button" value = "버튼1" onclick=" js 코드 호출가능"> -->
+	<input type="button" value = "버튼1" onclick=" alert('버튼 클릭!'); ">
+	<hr>
+	<input type="button" value = "버튼2" onclick=" prompt('당신은 살아있습니까?'); " >
+	<hr>
+	
+<!--  alert안에 큰 따옴표 넣으면 인식을 못해서 작은따옴표로 써줘서 구분하면 됨. 
+ 	  둘다 문자열로 인식하니까 
+ 	  큰 따옴표는 속성들을 부를때 쓰고, 문자열이나 데이터를 인식할때는 작은따옴표로 쓰는게 좋음 -->
+	
+<!--  대부분의 스크립트 언어는 화면에 보여주는 것과 동작하는 것은 별개로 분리되어 있음. 
+	  click을 하고 싶으면 click을 다루는 핸들러가 필요함.
+      on 치고  ctrl+space 누르면 on에 관한 핸들러가 다 나옴 -->
+        
+     <input type = "button" value = "더블클릭버튼" ondblclick=" alert('더블 클릭!!!'); ">
+     <hr>
+<!--  마우스 오버 이벤트 발생시 fun() - alert("실행"); 출력 -->
+<!--  마우스 다른데 갓다놨다 올렸다 갔다 놨다 올렸다 올릴때 마다 반응함 말 그대로 마우스 오버니까 -->
+
+     <input type = "button" value = "버튼3"  onmouseover=" fun(); ">
+     <hr>
+<!--  자바스크립트 on핸들러 검색해보기 -->
+
+	<input type = "button" value = "새창 열기" onclick=" myOpen(); ">
+	
+
+	<input type = "button" value = "창 닫기 함수 구현" onclick = " openTest(); ">
+
+
+	
+</body>
+</html>

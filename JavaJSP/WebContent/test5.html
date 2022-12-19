@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//  함수(function) -  메서드 (java-객체지향)
+	//  실행문을 저장해서 한번에 사용
+	
+/* 	// 함수의 선언/정의
+	function 함수명(){
+		실행문 ;	
+	}
+	
+	// 익명함수
+	 var 참조변수 = function (){
+					실행문;
+				}
+	
+	// 함수의 호출
+	함수명();
+	
+	// 익명함수 호출
+	참조변수명(); */
+	
+	
+	// Hello 메세지를 5번 출력 하는 함수를 생성 - 호출
+	
+	function hello5(){
+		for(var i = 0;i<5;i++)
+			document.write("Hello<br>");
+	}
+	
+	hello5();
+	
+	
+	/* //  함수전달인자를 사용(매개변수)
+	function 함수명(num,num2,num3,....){
+		실행문;
+	}
+	
+	// 함수 호출
+	함수명(값,값2,값3,.....); */
+	
+	// 로그인처리로직 수행하는 함수를 생성해서 사용
+	
+	function loginCheck(inputID,inputPW){
+		// 로그인 처리 로직구현
+		var DBUserId = "itwill";
+		var DBUserPw = "1234";
+		
+		// 1. 아이디 비밀번호 입력
+		//var inputID = prompt("아이디를 입력하시오");
+		//var inputID = "itwill";
+		//var inputPW = "1234";
+		// 2. 회원가입한 아이디와 입력한 아이디가 같은지 비교
+		if(DBUserId == inputID){
+			// 3-1. 같을때
+			//	4.	비밀번호 비교
+			if(DBUserPw == inputPW){
+				//		5-1. 같을때
+				//		6.로그인 성공! 	
+				alert(inputID+ "님 로그인 성공!");
+			}else{
+				//  	5-2. 다를때	
+				// 		6. 로그인 실패 ("비밀번호가 잘못되었습니다!")
+				alert(" 비밀번호가 잘못되었습니다.");
+			}		
+		}else{
+			// 3-2. 다를때
+			//  4. 비밀번호 비교 없이 메세지 출력
+			alert(" 회원정보가 없습니다! (로그인실패)");
+		}
+	}
+	
+	
+	//loginCheck("admin","1234");
+	loginCheck("itwill","1234");
+	
+	
+/* 	// 함수 결과값 리턴
+	function 함수명(){
+		실행코드;
+		return 결과;
+		실행코드;(실행 x)
+	}
+	
+	// 함수 강제종료 
+	function 함수명(){
+		실행코드;
+		return;(o) <=> break;(x)
+		실행코드;(실행 x)
+	} */
+	
+	
+	function test(){
+		document.write("1");
+		return 2;
+		//break;
+		document.write("2");
+	}
+	
+	var tmp = test();
+	document.write(tmp);
+	
+	
+	/* 함수의 목적
+	 - 모든 실행문을 실행시키는 것
+	 - 실행문의 결과를 리턴 하는것
+	 
+	함수 -  이름 ( o,x )
+		 -  매개변수 ( o,x )
+		 -  리턴값 ( o,x ) */
+		 
+
+	// 재귀함수
+/* 	function fn(){
+		실행문;
+		fn();
+	}
+	
+	fn(); */
+	
+	//숫자 1개를 출력하는 기능을 가진 함수
+	// => 재귀호출 통해서 1~10까지 숫자를 출력
+	var num = 0;
+	function printNum(){
+		num++;
+		document.write(num+" ");
+		
+		if(num ==10){ 
+			return;
+		}
+		
+		printNum();
+	}
+	
+	printNum();
+	
+	
+	// 지역변수, 전역변수
+	// 지역변수 : { } 블럭안에 선언 및 생성 사용되는 변수
+	// 전역변수 : 영역제한 없이 사용가능한 변수
+	
+	
+	//////////////////////////////////////////////////////////////////////
+	
+	/*
+	  객체 (Object) : 눈앞에 보이는 모든 대상 
+	  
+	  객체 - 속성
+	  	   - 기능
+		ex) 모니터 객체	  	   
+		    속성 : 사이즈,컬러,가격,브렌드,모델....
+		     => 객체의 변수
+		    기능 : 화면출력,전원,RGB 조절,스피커조절...
+	  		 => 객체의 메서드
+	  		 
+	   객체를 생성
+	   new  객체();	
+	
+	*/
+	
+	var TV = new Object();
+	
+	TV.size = 100;
+	TV.color = 'black';
+	TV.price = 300;
+	TV.ch = 0;
+	
+	// 티비의 채널을 10으로 변경하는 기능
+// 	function changeCH(){
+// 		TV.ch = 10;
+// 	}
+	
+	function changeCH(ch){
+		TV.ch = ch;
+	}
+	
+	document.write(" 티비의 크기 : "+TV.size+" 인치<br>");
+	
+	document.write("채널 번호 : "+ TV.ch+"<br>");
+	
+	//changeCH();
+	changeCH(100);
+	
+	document.write("채널 번호 : "+ TV.ch+"<br>");
+	
+	
+</script>
+</head>
+<body>
+	<h1>test5.html</h1>
+
+</body>
+</html>

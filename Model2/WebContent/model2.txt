@@ -1,0 +1,165 @@
+Model2.txt
+
+	JSP파일을 실행하면 -> java파일이 됐다가(Servlet) -> class로 실행이 된다.
+
+
+	Model2 방식의 개발
+	 => MVC패턴을 사용하여 개발
+	 
+	 M: model => 데이터 베이스와 연동, 처리 로직 부분(java)
+	 			POJO(Plain Old Java Object) : 그냥 자바 파일
+	 V: view => 화면 구현(.jsp)
+	 C: controller => model, view 연결 동작(servlet)
+	 
+	 
+	 => 관심사의 분리 / 업무를 분리 (잘 처리한다)
+	 
+	 => Model2(Pattern)를 쓰는 이유? 역할에 맞는 동작을 수행하기 위함 
+		
+		Pattern은 계속 발전해 나가지만 아직까지도 가장 기본적이고 많이 쓰는 패턴임.
+		
+		MVC 
+		
+		사용자   ->   Controller  ->  Model     <->   MySQL
+						  |
+	 				 	 View
+	 					
+	 	MVC(FrontController)
+	 	
+	 	사용자   ->   FrontController(Servlet)  -> Controller(java)  -> Model(DAO)  <-> MySQL
+						   |			   			(Controller와 Model을
+						  View(view) 					한 덩어리로 봄)
+		
+		
+			Controller에서 바로 View로 가는 것도 가능함.
+			
+					  
+					  
+		Controller(Servlet)에서 DB정보 필요하면 DB로 가고 필요없으면 바로 View로 간다.
+	 
+
+	 CREATE TABLE `jspdb`.`itwill_board` (
+  `bno` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `pass` VARCHAR(45) NOT NULL,
+  `subject` VARCHAR(100) NOT NULL,
+  `content` VARCHAR(2000) NOT NULL,
+  `readcount` INT NULL,
+  `re_ref` INT NULL,
+  `re_lev` INT NULL,
+  `re_seq` INT NULL,
+  `date` DATE NULL,
+  `ip` VARCHAR(45) NULL,
+  `file` VARCHAR(200) NULL,
+  PRIMARY KEY (`bno`));
+ 
+ 
+ * 커넥션풀 (Connection Pool)
+  디비 연결정보(Connection)를 매번 생성하는것이 아니라, 
+  pool에 저장후 사용, 사용 후 반납해서 재사용
+   => 호출마다 연결정보를 생성,해제를 막기위해서
+   
+   1) service() 메서드당 1개의 pool을 생성한다(백터 형태)
+   2) 커넥션의 개수를 제한한다.
+   3) 커넥션 객체를 다 사용후 자원을 회수
+   
+   
+   클라이언트 요청  -> 할당할 커넥션이 있는지 체크 (pool) 
+     -> 커넥션이 있을때 -> 커넥션 객체 사용 (sql 실행) 
+     -> 커넥션을 반환
+     
+  클라이언트 요청  -> 할당할 커넥션이 있는지 체크 (pool) 
+     -> 커넥션이 없을때 -> 커넥션 객체를 대기(반환할때 까지),
+                           대기시간을 넘었을경우 임시 커넥션을 생성
+                           
+   * 라이브러리 설치
+       commons-collections4-4.4.jar  
+        => 자카르타 DBCP API 처리                   
+       commons-dbcp2-2.9.0.jar
+        =>  DBCP API 처리
+  	   commons-pool2-2.11.1.jar
+  	    =>  Pool API 처리 
+  	    
+  	    
+context.xml	    
+<Context> : 프로젝트
+	<Resource   // 정보
+	   name="jdbc/model2"   정보의 이름 
+	   auth="Container"     자원관리자 (Container(tomcat)/Application)
+	   type="javax.sql.DataSource"   리소스를 실제로 사용하는 타입
+	   driverClassName="com.mysql.cj.jdbc.Driver"    드라이버명
+	   username="root"    디비 계정
+	   password="1234"    디비 비밀번호
+	   url="jdbc:mysql://localhost:3306/jspdb"    디비 주소 
+	   maxWait="5000" 	 최대 대기시간 (5초)
+	/>
+</Context>
+ 
+ 
+ 
+ * 답글 처리하기
+ 
+  re_ref : 그룹번호 작성(어떤글에 관련되어있는지 표시)
+     =>   일반글의 경우 bno == re_ref 
+     =>   답글의 경우  원글의 re_ref == 답글 re_ref     
+  
+  re_lev : 답글 들여쓰기 
+     =>    일반글의 경우  0
+     =>    답글의 경우 원글의 re_lev + 1 
+  
+  re_seq : 답글 순서
+     =>    일반글의 경우  0
+     =>    답글의 경우 원글의 re_seq + 1
+ 
+ 
+ -----------------------------------------------------------
+ bno	subject			re_ref		re_lev		re_seq
+ 1		일반1			1			0			0
+ 2		일반2			2			0			0
+ 3		일반3			3			0			0
+ 4		답1-1			1			1			2(수정)
+ 5		답1-2			1			1			1
+ 6		답2-1			2			1			1
+ 7 		일반4			7			0			0
+ 8		답2-1-1			2			2			2	  
+   
+정렬 : re_ref 내림차순, re_seq 오름차순
+-----------------------------------------------------------
+ bno	subject			re_ref		re_lev		re_seq
+ 7		일4				7			0			0
+ 11		답4-2			7			1			1
+ 10		답4-1			7			1			2
+ 3		일3				3			0			0
+ 2		일2				2			0			0
+ 6		>답2-3			2			1			1
+ 8		>>답2-3-1		2			2			2
+ 9		>>>답2-3-1-1	2			3			3
+ 5		>답2-2			2			1			4(수정)
+ 4		>답2-1			2			1			5(수정)
+ 7		>>답2-1-1		2			2			6(수정)
+ 1		일1				1			0			0
+ 
+ 
+ 
+ 
+ 
+ D:\workspace_jsp\Model2\WebContent\upload
+ => 이클립스의 upload 폴더
+
+
+ D:\workspace_jsp\.metadata\.plugins\org.eclipse.wst.server.core
+ \tmp0\wtpwebapps\Model2\upload
+ => 서버(tomcat) 올려서 실행(배포)중인 upload 폴더
+ 
+ 
+ 
+ 메모리 저장 공간단위
+ 
+  * bit : 0/1 데이터를 표현할수있는 공간
+  * K 값이 1000아닌 1024일까? 2진수로 구성 1024 (2^10)
+ 
+  bit	byte	KB		MB		GB		TB    .....
+ 
+  1		8bit	1024	1024	1024	1024
+ 				byte	KB		MB		GB
+	 

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		// 객체 - 속성(변수), 동작(메서드)
+		
+		// 1. 내장객체 : 자바스크립트 엔진
+		//  => 문자(String), 숫자(Number), 배열(Array), 수학(Math), 날짜(Date)
+			
+		// 2. 브라우저 객체모델(BOM:Browser Object Model)
+		//  => 계층적 구조 (window, screen, location, history, document, navigator)
+		// 브라우저에 주소는 브라우저의 속성값임. 주소값을 바꾸면 페이지가 바뀌는 동작을 수행함.
+		document.write("aaaaa" + "<br>" + "<br>"); 
+		
+		// document가 객체고 write가 메서드임.
+		
+		// 3. 문서 객체 모델(DOM : Document Object Model)
+		// => HTML문서의 구조
+		
+		// 내장객체 - 날짜정보(Date Object)
+		// => 날짜, 시간 정보를 저장관리 객체
+		
+		// 날짜 객체중 월의 정보는 0~11월 까지로 표시.
+
+		var today = new Date();
+		document.write(today + "<br>" + "<br>");
+		
+		var day1 = new Date(2022,8,6); // 연, (월-1)의 값이 들어가야함 그래서 자동으로 2월로 인식함, 일
+		document.write(day1);
+		
+		document.write("<hr>");
+		
+		var day2 = new Date("2022/2/4"); // 여기에 "<br>" 넣으면  invaild data로 나옴 출력하려는 걸 문자형으로 써서 그런듯
+		document.write(day2);
+		
+		document.write("<hr>");
+		//  오늘 날짜 출력 "2022년 7월 8일"
+		
+		var day3 = new Date(2022,6,8);
+		document.write(day3);
+		
+		document.write("<hr>");
+		
+		document.write("오늘 날짜 : " + today.getFullYear() + "년" + today.getMonth() + "월" + today.getDate() + "일 입니다.");
+		
+		document.write("<hr>");
+		
+		
+		// getDay() 일~토 (0~6)
+// 		if(today.getDay() == 5){
+// 			document.write("오늘은 금요일 입니다.")
+// 		}
+		// document.write("오늘은 " + today.getDay() + "입니다.");
+
+
+// 		switch (a) {
+// 		case 3:
+// 			alert('비교하려는 값보다 작습니다.');
+// 		case 4:
+// 			alert('비교하려는 값과 일치합니다.');
+// 		case 5:
+// 			alert('비교하려는 값보다 큽니다.');
+// 		default:
+// 			alert("어떤 값인지 파악이 되지 않습니다.");
+// 		}
+		
+		var date = today.getDay();
+		
+		switch(date){
+		case 0:
+			document.write("오늘은 일요일입니다.");
+			break;
+		case 1:
+			document.write("오늘은 월요일입니다.");
+			break;
+		case 2:
+			document.write("오늘은 화요일입니다.");
+			break;
+		case 3:
+			document.write("오늘은 수요일입니다.");
+			break;
+		case 4:
+			document.write("오늘은 목요일입니다.");
+			break;
+		case 5:
+			document.write("오늘은 금요일입니다.");
+			break;
+		case 6:
+			document.write("오늘은 토요일입니다.");
+			break;
+		default:
+			document.write("잘 모르겠습니다.");
+			break;
+		}
+		
+		
+		 document.write("<hr>");
+		// 선생님 코드
+		
+		var day = "";
+		switch(today.getDay()){
+		case 0:
+			day = "일요일";
+			break;
+		case 1:
+			day = "월요일";
+			break;
+		case 2:
+			day = "화요일";
+			break;
+		case 3:
+			day = "수요일";
+			break;
+		case 4:
+			day = "목요일";
+			break;
+		case 5:
+			day = "금요일";
+			break;
+		case 6:
+			day = "토요일";
+			break;
+			
+		default:
+			day = " 요일정보없음(error)";
+		}
+		
+		document.write(day);
+		
+		
+		
+		function myGetDay(day){
+			
+			var day = "";
+			switch(today.getDay()){
+			case 0:
+				day = "일요일";
+				break;
+			case 1:
+				day = "월요일";
+				break;
+			case 2:
+				day = "화요일";
+				break;
+			case 3:
+				day = "수요일";
+				break;
+			case 4:
+				day = "목요일";
+				break;
+			case 5:
+				day = "금요일";
+				break;
+			case 6:
+				day = "토요일";
+				break;
+				
+			default:
+				day = " 요일정보없음(error)";
+			}
+			
+			document.write(day);
+		};
+		
+		
+		document.write("<hr>");
+		document.write("day1 요일 : ")
+		myGetDay(day1.getDay());
+		
+		document.write("<hr>");
+		document.write("day2 요일 : ")
+		myGetDay(day2.getDay());
+		
+		document.write("<hr>");
+		
+		
+		// 특정일의 요일정보를 찾아 출력하시오.
+		// 2002년 5월 31일
+
+		var day6 = new Date("2022/5/31"); 
+		myGetDay(day6.getDay());
+		
+		// D-Day 계산기
+		// 특정일 - 오늘 => 일수
+		// 2022-12-15 크리스마스까지 남은 일수 계산
+		
+		document.write("<hr>");
+		var Xmas = new Date("2022/12/25");
+		document.write(Xmas - today);  // ms출력
+		// 14629657230 ms
+		// 1s = 1000ms
+		// 1m = 1000ms * 60
+		// 1h = 1000ms * 60 * 60
+		// 1d = 1000ms * 60 * 60 * 24
+		// 169.3269945949074 => 0.3일 남은 거임 저 뒤에 나머지는 8시간 하루 중 8시간 남았으니까
+		
+		var result = (Xmas - today) / (1000 * 60 * 60 * 24);
+		
+		document.write("<hr>");
+		document.write("D-day:" + Math.ceil(result)+ "일");
+		
+		
+		
+		
+		
+		
+		// 참조변수 => 내가 저걸 찾아 본다(참조)  이 객체를 도와주는 혹은 가리키는 변수를
+		// new 하는 순간 메모리에 올라감  즉, 인스턴스가 생김.
+		
+		// 변수는 데이터를 저장하는 공간이 작음, 객체의 공간이 훨씬 넓음.	
+		// 변수는 책상 객체는 사물함  책상이 좁으니까 사물함 쓰는거임.
+		// 여기서 내 사물함의 위치를 기억해야함 그게 주소임. 객체의 주소
+		// 친구가 책을 달라고 해서 책상에 없으면 사물함의 위치를 알려줌 즉, 객체의 주소를 알려주는 거임 누가 물어보면 호출하면
+		//  today.메서드 
+		
+		// 객체를 만들때마다 이을려고 노력해야함 ㅇㅇ 다 이어버리면 사용하기 편하니까 ㅇㅇ
+		// 좀 더 넓은 공간에다가 한 번에 모아놓고 접근하는게 객체임.
+		
+		// 주소를 참조한다 레퍼런스        포인터랑 비슷한건가? c에는 객체개념이 없네
+
+				
+		//은행은 내가 통장 주면 은행원이 돈을 뽑아줌 나는 금고에 접근할 권한이 없으니까
+		// 은행원이 데이터를 대신해서 넣어주고 뽑아주고 ㅇㅇ
+		
+		// 은행원이 은행에서 권한이 있는 대상이니까
+		
+		// get set메서드를 만드는 이유는 그거지 내가 직접적인 권한이 없으니까
+		// private으로 접근지정자가 지정되면
+		
+		// 시간 주세요 하면  은행원이 시간을 get메서드로 뽑아주고
+		// 시간 지정할게요 하면 은행원이 set메서드로 시간 지정해줌
+	</script>
+</head>
+<body>
+	<h1>test6.html</h1>
+	<a href = "">이것도 객체야 하이퍼링크</a>     <!-- a href 이것도 객체임 객체 아닌게 없음 다 객체임 자바스크립트는 -->
+
+</body>
+</html>

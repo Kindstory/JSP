@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- https://jquery.com/download/  직접 파일다운로드 -->
+<script src="jquery-3.6.1.js"></script>
+
+<!-- https://jquery.com/download/  네트워크 CDN사용 -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script> -->
+<script type="text/javascript">
+//   $(document).ready(function(){
+// 	  alert(" jQuery 실행 ");  
+//   });
+  
+//   $(function(){
+// 	  alert(" jQuery 실행2 ");	  
+//   });
+	$(document).ready(function(){
+		
+		// ajax
+		//$.ajax("이동할 페이지 주소");
+		//$.ajax("String1.jsp");
+		//$.ajax("String1.jsp",{ 옵션들... });
+		$.ajax("String1.jsp",{
+			success:function(data){
+				// data => 이동한 페이지의 출력되는 정보 모두가져오기 
+				
+				//alert('페이지 이동이 성공했을때 실행됨');
+				//alert(data);
+				$('body').append(data+1);
+				
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+
+</script>
+
+
+</head>
+<body>
+   <h1>string1.html</h1>
+   jQuery 라이브러리 사용<br>
+   ajax : 비동기 방식의 통신(js,xml)
+      => 화면의 변화(깜빡임)없음 데이터 통신(갔다오기)
+   
+   <!-- <a href="String1.jsp">aa</a> -->
+   
+   
+   
+</body>
+</html>

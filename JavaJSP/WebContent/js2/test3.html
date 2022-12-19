@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+		// form태그 접근
+		// window.document.폼이름 (form태그에 name항목)
+		// window.document.forms[0] (배열로 접근)
+	
+
+		// 버튼 클릭시 -> test2 페이지 이동(submit) submit이 동작
+		function fun1(){
+			alert("fun1() 실행!")
+			// 1. 페이지 이동주소 변경
+			window.document.fr.action = "test2.html";
+			// 여기서 action이 변수니까 값을 넣어주면 됨.	
+			// 2. 페이지 이동(submit)
+			//document.forms[0].submit; // 이건 말이 안됨 submit은 변수니까 초기화를 하든지 값을 넣어야 함.
+			document.forms[0].submit(); // 이거 없어도 submit 눌러주면 test2로 가긴 함. 이걸 넣어주면 안눌러도
+										// 자동으로 감. 문제가 있어도 무조건 작동함.
+			// 속성변경하기와 submit 버튼은 다른 애임.
+			// 일반적으로  form태그는 submit과 같이 제어하게 됨.
+		}
+		
+		// 아이디,비밀번호가 입력여부 체크
+		function fun2(){
+			//1. 입력된  id/pw 가져오기
+			var id = document.fr.id.value;
+			var pw = document.fr.pw.value;
+			
+			console.log(" 아이디 : "+ id);
+			console.log(" 비밀번호 : "+ pw);
+			
+			//2. 입력된 데이터가 있는지 체크
+			if(id == ""){
+				alert("아이디를 입력하시오1");
+				document.fr.id.focus();
+				return;  // 함수 종료
+			}
+			if(id.length <= 0){
+				alert("아이디를 입력하시오2");
+			}
+			
+			if(pw ==""){
+				alert("비밀번호를 입력하시오");
+				document.fr.pw.focus();
+				return;  // 함수 종료
+			}
+			
+			// 데이터 전송
+			document.fr.submit();
+			
+		}
+		
+		// 아이디,비밀번호가 입력여부 체크
+		function fun3(){
+			alert("fun3()");
+			//1. 입력된  id/pw 가져오기
+			var id = document.fr.id.value;
+			var pw = document.fr.pw.value;
+			
+			console.log(" 아이디 : "+ id);
+			console.log(" 비밀번호 : "+ pw);
+			
+			//2. 입력된 데이터가 있는지 체크
+			if(id == ""){
+				alert("아이디를 입력하시오1");
+				document.fr.id.focus();
+				return false;  // 함수 종료
+			}
+			if(pw ==""){
+				alert("비밀번호를 입력하시오");
+				document.fr.pw.focus();
+				return false;  // 함수 종료
+			}
+			
+			// 데이터 전송
+			// 		document.fr.submit();
+			
+		}
+		
+		
+		
+		
+		
+</script>
+</head>
+<body>
+	<h1>test3.html</h1>
+	
+	<fieldset>
+		<legend> 폼태그 만들기</legend>
+		<!--action = " 이동할 페이지(정보전달 페이지)"
+			action = "" (생략) 자기 자신페이지
+			
+			method = "get" 속성 생략시 기본값. 안 적어도 get방식 post로 주지 않는 이상 get방식이다.
+		  -->
+		<form action = "" name = "fr" method = "get">
+			아이디 : <input type = "text" name="id"> <br> 
+<!-- 			여기서 name이 주소창 끝에 전달되는 parameter 이게 없으면 글자 아무것도 안뜨고 ? 뜸. -->
+			비밀번호 : <input type = "text" name = "pw"> <br>
+			
+			<input type = "submit" value = "전송">
+			<hr>
+			<input type = "button" value = "속성변경하기" onclick = " fun1()">
+			<input type="button" value="데이터 확인" onclick=" fun2(); ">
+		</form>
+	</fieldset>
+	
+	 <script type="text/javascript">
+	// 데이터 유효성체크
+	
+	
+	// 아이디 입력창
+	//window.document.fr.id =>?
+	alert(document.fr.pw);
+	console.log(document.fr.pw);
+	//window.document.forms[0].id =>?
+	//document.fr.id.value = "itwill";
+	
+	alert(document.fr.pw.value);
+   
+   </script>
+	
+	<hr>
+	<h2>HTTP method: GET()/POST() </h2>
+	
+	http://localhost:8000/JspGood/js2/test3.html?이름=값&이름=값   &로 계속 데이터 연결해서 전달
+	<h3> GET 방식 :
+		 전송(submit())할 데이터를 url에 정보를 붙여서 전송하는 방식 
+		 1) 데이터의 길이 제한 : 256byte 
+		 2) body가 필요없음
+		 3) 빠른 전송속도
+		 => 적은 양의 데이터 전송시 사용
+		 4) 데이터가 주소줄에 노출(보안위협)
+		 => 중요데이터(개인정보) 전달 x
+	</h3>
+	http://localhost:8000/JspGood/js2/test3.html
+	<h3> POST 방식:
+		 전송(submit())할 데이터를 본문(body)에 붙여서 전송하는 방식
+		 1) 데이터 길이 제한 : 없음
+		 2) body가 필요함(정보를 담아간다)
+		 3) 느린 전송속도 (상대적으로 get방식보다 덩치가 커서 조금 느리다는 거지 그 차이가 1초도 안됨 이것도 빠름)
+		 => 많은 양의 데이터 전송시 사용
+		 4) 데이터 주소출 노출 x (보안 안정)
+		 => 중요데이터 전달 o
+	</h3>
+	
+<!-- 	 면접때 질문으로 나올 수 있음 기본적인 개념이라. -->
+	
+<!--     포스트를 주지 않는 이상 포스트 방식은 거의 없고 대부분 get방식이다.
+ 	     submit을 눌리면 그게 get방식임 
+         url에 ?가 뜨고 뒤에 머가 뜨면 다 get방식임 
+         거의 90%가 get방식임.	        -->
+	
+</body>
+</html>

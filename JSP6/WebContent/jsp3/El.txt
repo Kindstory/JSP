@@ -1,0 +1,41 @@
+
+
+* EL(Expression Language): 표현언어 (el 표현식)
+
+  => out.print("txt")    -> (스크립틀릿 만들어야함 자바코드 ㅇㅇ); 
+  	 <%= "txt" %> 방식을 대신 사용
+  
+  	${ 값, 변수, 연산식, 메서드 리턴값 }
+  	${ 객체명, 변수명 } or ${ 객체명['변수명'] } 
+  	
+ * EL 내장객체
+ 
+ 
+  JSP  : pageContext/request     / session       / application
+ 	EL : pageScope / requsetScope / sessionScope / applicationScope
+ 	
+ 	=> 해당 영역에 값을 저장 & 공유(JSP 영역객체와 공유가능)
+ 	    (session에 저장된걸 EL표현식으로 꺼내쓸 수 있음.)
+ 	    
+ 	   * param / paramValues
+ 	   * header / headerValues
+ 	   * cookies
+ 	   * initParam
+ 	   * pageContext
+ 	   
+ 	   
+ 	   
+ 	   * JSTL (JSP Standard Tag Library) : 아파치에서 제공하는 자주 사용되는 기능을 태그로 표현한 형태(커스텀 태그)
+ 	   
+ 	   1) CORE : 기본적인 기능 - 변수선언, 조건문, 반복문, 페이지이동...
+ 	   	
+ 	   2) Formatting : 다국어 처리, 날짜, 숫자데이터 표현
+ 	   
+ 	   3) DB : SQL 수행 (CRUD) 
+ 	  
+ 	   4) XML : xml문서 처리 
+ 	   
+ 	   수업시간엔  CORE, Formatting만 다룸.  
+ 	   
+ 	   
+ 	   

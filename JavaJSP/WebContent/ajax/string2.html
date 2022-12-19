@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.1.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+	  // ajax 사용해서 String2.jsp 페이지에 데이터 전달
+	  $.ajax({
+		  url:"String2.jsp",
+		  data:{name:'ITWILL'},
+		  success:function(aaa){
+			  alert("비동기방식 성공");
+			  $('body').append(aaa);
+		  },
+		  error:function(){
+			  alert("비동기방식 실패");
+		  }
+	  });
+	  //  ajax
+	  
+	  
+	  // 버튼 클릭했을때
+	  $("#btn").click(function(){
+		  alert(" 버튼 클릭! ");
+		  
+		  //ajax방식으로 정보 전달
+		  $.ajax({
+			  url:"String2.jsp",
+			  data: {name:$('#id').val()},
+			  success:function(data){
+				  alert("버튼 클릭후 ajax 성공");
+				  $('body').append(data);
+			 }
+		  });
+		  
+	  });
+	  
+	  
+	  
+	  
+	  
+	  
+  }); // jquery
+</script>
+
+</head>
+<body>
+   <h1>string2.html</h1>
+   
+   <input type="text" id="id" name="id"> 
+   <input type="button" id="btn" value="클릭">
+   
+   
+</body>
+</html>

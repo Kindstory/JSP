@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		// 연산자
+		// 1. 산술연산자 ( + - * / % )
+		 var num1 = 200;
+		 var num2 = 400;
+		 
+		 document.write(" + : "+(num1 + num2)+"<br>");
+		 document.write(" - : "+(num1 - num2)+"<br>");
+		 document.write(" * : "+(num1 * num2)+"<br>");
+		 document.write(" / : "+(num1 / num2)+"<br>");
+		 document.write(" % : "+(num1 % num2)+"<br>");
+		 
+		 // 과일 25개를 포장하는 상자가 있다.
+		 // 이때, 상자는 한번에 5개씩 포장가능하다. 필요한 상자의 개수는?
+				 
+		 //document.write(25/5);	
+		 
+		 var banana = 25;
+		 var sizeOfBox = 5;
+		 
+		 document.write(" 포장에 필요한 상자의 개수 : "+(banana/sizeOfBox)+"개<br>");
+		 
+		 // 849 -> ???? -> 800
+		 // 777 -> ???? -> 700
+		 document.write(849/100);
+		 document.write("<hr>");
+		 document.write(849-(849%100));
+		 document.write("<hr>");
+		 document.write( Math.floor(849/100) * 100 );
+		 document.write("<hr>");
+		 
+		 // 953 -> ???? -> 951 
+ 		 //  953 을 950으로 만들기
+ 		 //  3을빼기 (일의자리 숫자 없애는방법)
+ 		 //  +1 
+		 document.write(953-(953%10)+1);		 
+		 document.write("<hr>");	
+		 document.write(Math.floor(953/10)*10+1);
+		 document.write("<hr>");
+		 
+		 
+		 // 2. 대입 연산자 (  A = B )
+		 //    복합대입 연산자 ( +=,-=,*=,/=,%= )
+		 //    A += B   <=>  A = A+B
+		 document.write(num1+","+num2);
+		 document.write("<hr>");
+		 document.write(num1 += num2);
+		 document.write("<hr>");
+		 document.write(num1+","+num2);
+		 document.write("<hr>");
+		 
+		 document.write("부산" + "아이티윌"+"051"+"803"+"0909");
+		 document.write("<hr>");
+		 var tmp ="1";
+		 var tmp2 ="2";
+		 var tmp3 ="3";
+		 document.write(tmp + tmp2 + tmp3);
+		 document.write("<hr>");
+		 document.write(" 자바스크립트로 테이블 만들기 ");
+		 
+	  
+		 document.write("<table border='1'>");
+		 document.write("<tr>");
+		 document.write(" <td>1</td>");
+		 document.write(" <td>2</td>");
+		 document.write(" <td>3</td> ");
+		 document.write("</tr>");
+		 document.write("<tr>");
+		 document.write("<td>4</td>");
+		 document.write("<td>5</td>");
+		 document.write("<td>6</td>");
+		 document.write("</tr>   ");
+		 document.write(" </table>   ");
+		 
+		 document.write("<hr>");
+		 
+		 var tableTag ="";
+		 tableTag += "<table border='1'>";
+		 tableTag += "<tr>";
+		 tableTag += "<td>";
+		 tableTag += num2;
+		 tableTag += "</td>";
+		 tableTag += "<td>2</td>";
+		 tableTag += "</tr>";
+		 tableTag += "</table>";
+		 
+		 document.write(tableTag);
+		 
+		 // 3. 증감연산자  (++A, A++,--A,A--)
+		 var A = 100;
+		 
+		 document.write(++A); // 101
+		 // =>  변수의 값을 사용하기전에 1증가/1감소 (전위연산)
+		 document.write("<hr>");
+		 document.write(A++); // 101
+		 // =>  변수의 값을 사용하고나서 1증가/1감소 (후위연산)
+		 document.write("<hr>");
+		 document.write(A); // 102
+		 document.write("<hr>");
+		
+		 // 문자데이터
+		 document.write(" 안녕하세요 ");
+		 //document.write(" "안녕"하세요 ");(x)
+		 document.write(" '안녕'하세요 ");
+		 document.write(' "안녕"하세요 ');
+		 document.write(' 안녕하세요 ');
+		// document.write("<table border='1'>");
+		// document.write('<table border="1">');
+		document.write("<hr>");
+		// 4. 비교연산자 ( == != > < >= <=  === !== )
+		// => 연산의 결과는 항상 boolean ( true/false )		
+		
+		//  >= (o)  => (x)
+		
+		num1 = 100;
+		num2 = 200;
+		
+		document.write(" == "+ (num1 == num2));
+		document.write("<hr>");
+		document.write(" != "+ (num1 != num2));
+		document.write("<hr>");
+		
+		num1 = 100;
+		num2 = "100";
+		document.write(" == "+ (num1 == num2));
+		// => 데이터 값만 비교
+		document.write("<hr>");
+		document.write(" === "+ (num1 === num2));
+		// => 데이터 타입, 데이터 값 모두 비교
+		document.write("<hr>");
+		
+		// 5. 논리연산자 (&& (and), ||(or), !(not) )
+		//  논리표
+		//  A		B		&&		||
+		// ----------------------------------------------
+		//  T		T		T		T
+		//  T		F		F		T
+		//  F		T		F		T
+		//  F		F		F		F
+		
+		//  A		!A
+		//-----------------
+		//  T		F
+		//  F		T
+		
+		
+		// String name = null;
+		// System.out.println((4<2) && name.length == 4);
+		// System.out.println((4>2) && name.length == 4);
+		
+		
+		var a = 10;
+		var b = 20;
+		
+		document.write(a<b && b==a || a>b);
+		
+		// 연산자 우선순위
+		// 1. ()
+		// 2. 단항연산 (++,--,!)
+		// 3. 산술연산 ( + - */ % )
+		// 4. 비교연산 (== != > < >= <= === !==)
+		// 5. 논리연산 (&& ||)
+		// 6. 복합대입연산 (+= -= *= /= %=)
+		
+		
+		
+		// 6. 삼항연산자
+		// 조건식? 실행문1:실행문2
+		// (조건식)? 실행문1(true):실행문2(false)
+				
+		a = 200;
+		b = 300;
+		// 둘중에 더 큰값을 찾아서 출력
+		
+		document.write( a>b?  a : b );
+		document.write("<hr>");
+		document.write( a>b?  "a가 더크다" : "b가 더크다");
+		document.write("<hr>");
+		
+		a = "hello";
+		// 숫자가  양수/음수 판단
+		document.write( a>0? "양수":"음수");
+		document.write("<hr>");
+		
+		// 숫자가 정수(양수,음수,0) 인지를 판단
+		
+// 		document.write( a>0? "양의 정수":"양수가 아니다");	
+// 		document.write( a>0? "양의 정수": ( a < 0? "음의 정수" : "음수가 아니다") );	
+		document.write( a>0? "양의 정수": ( a < 0? "음의 정수" : (a == 0? "0" : "정수가 아니다.") ) );
+		document.write("<hr>");
+		
+		
+		// 바나나 - 37개 
+		// 박스의 크기 - 5
+		// =>  필요한 박스의 개수?
+
+	    //  바나나 / 박스의 크기  => 필요한 상자의 수
+	    //  바나나 / 박스의 크기 + 1 => 포장하고 나머지가 있을때
+	    banana = 35;
+	    sizeOfBox = 5;
+	    
+	    document.write(banana / sizeOfBox);
+		document.write("<hr>");
+	    document.write( banana % sizeOfBox );
+		document.write("<hr>");				
+	    document.write( (banana / sizeOfBox) + ( banana%sizeOfBox >0? 1:0) );
+		document.write("<hr>");
+	    document.write( Math.floor(banana / sizeOfBox) + ( banana%sizeOfBox >0? 1:0) );
+		
+		
+		
+		
+		
+	
+	</script>
+</head>
+<body>
+   <h1>js1/test2.html</h1>
+   
+   
+   <table border="1">
+       <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+       </tr>
+       <tr>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+       </tr>   
+   </table>
+
+   
+   
+</body>
+</html>

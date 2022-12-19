@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.1.js"></script>
+<script type="text/javascript">
+   $(document).ready(function(){
+	   
+	   // rss정보(xml 데이터)를 받아서 원하는 정보 출력
+	   $.ajax({
+		  // url:"http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=2623060000",
+			url:"rss.xml",	  
+			success:function(data){
+				alert(" 페이지 다녀오기 성공 ");
+				//alert(data);
+				//console.log(data);
+				
+				$(data).find('data').each(function(){
+					
+					var h = $(this).find('hour').text();
+					var w = $(this).find("wfKor").text();
+					
+					$('body').append(h+"시 날씨 정보 :"+w+"<br>");
+					
+				});
+				
+				
+				
+			},
+			error:function(){
+				alert(" 페이지 다녀오기 실패 ");
+			}
+	   });// ajax
+	   
+	   
+	   
+	   $('#btn1').click(function(){
+		   // ajax 사용 - jtbc 뉴스정보 불러오기
+		   alert('클릭');
+		   
+		   $.ajax({
+			   url:"https://fs.jtbc.co.kr//RSS/sports.xml",
+			   success:function(data){
+				   alert("페이지 다녀오기 성공");
+				   
+				   $(data).find("item").each(function(){
+					   var title = $(this).find("title").text();
+					   var link = $(this).find("link").text();
+					   
+					   $('div').append("<a href='"+link+"'>"+title+"</a><br>");
+				   });
+				   
+			   },
+			   error:function(){
+				   alert("페이지 다녀오기 실패");
+			   }
+		   });
+		   
+	   });//click
+	   
+	   
+	   
+	   
+	   
+   });//jquery
+</script>
+
+</head>
+<body>
+    <h1>rss.html</h1>
+    
+    <H2> 날씨 정보를 받아와서 사용 </H2>
+    
+    <hr>
+    
+    <input type="button" value="기사정보 불러오기(ajax)" id="btn1">
+    <hr>
+     <div></div>
+    <hr>
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type = "text/javascript">
+		// 연산자
+		// 1. 산술연산자( + - * / &)
+
+		var num1 = 200;
+		var num2 = 400;
+		
+		document.write(" + : " + (num1 + num2) + "<br>");
+		
+		// 849 -> ???? -> 800  
+		// 777 -> ???? -> 700
+		// 100의 자리만 남게하시오.
+		
+	
+// 		(세자리)수를 입력하시오
+		
+// 		scan a 
+// 		if로 100 < a < 1000 잡고
+		
+// 		10의 2승 10의 1승 10의 0승 곱하기 각 자릿수
+// 		a          b         c
+// 				   b c를 0으로 만드는거지
+					
+// 		 a * 10e2 + b * 10e1 + c *10e0	= var num3;
+//       b = 0, c =0;		
+
+		// document.write(a*(Math.pow(10,2)) + b*(Math.pow(10,1)) + c*(Math.pow(10, 0)));
+		// 나중에 다시 해봐야지 ㅇㅇ
+		
+		document.write(849/100);
+		document.write("<hr>");
+		document.write(849-(849%100));
+		document.write("<hr>");
+		document.write(Math.floor(849/100)*100);
+		document.write("<hr>");
+		
+		
+		// 953 -> ??? -> 끝자리만 1로 바뀌게
+		// 953을 950으로 만들기
+		// 3을 빼기 (일의 자리 숫자 없애는 방법)
+		// + 1
+		// 이런식의 생각논리가 알고리즘 ㅇㅇ 난 원래 이렇게 계획하는데 머 할때 ㅇㅇ 앱 계획도 하고 ㅇㅇ
+		
+
+		document.write(953-(953%10) + 1);
+		document.write("<hr>");
+		document.write(Math.floor(953/10)*10 + 1);
+		document.write("<hr>");
+		
+		// 2. 대입 연산자( A = B ) 
+		//    복합대입연산자 ( +=, -=, *=, /=, %=)
+		
+		document.write("부산" + " 아이티윌" + 051 + "803" + 0909);   // 0이 앞에 붙는 수는 8진수라 41로 출력됨
+		document.write("부산 " + "아이티윌 " + "051 " + "803 " + "0909");   
+		document.write("<hr>");
+		var tmp = "1";
+		var tmp2 = "2";
+		var tmp3 = "3";
+		document.write(tmp + tmp2 + tmp3);
+		
+		document.write("<hr>");
+		
+		var arr = [1,2,3];
+		
+		for(var i = 0; i<arr.length; i++){
+			
+			document.write(arr[i] + " ");
+		}
+		document.write("<br>");
+		
+		var arr = [4,5,6];
+		
+		for(var i = 0; i<arr.length; i++){
+			
+			document.write(arr[i] + " ");
+		}
+		document.write("<br>");
+		
+		document.write("<table border = '1'>");
+		document.write("<tr>");
+		document.write("<td>1</td>");
+		document.write("<td>2</td>");
+		document.write("<td>3</td>");
+		document.write("<tr>");
+		document.write("<td>4</td>");
+		document.write("<td>5</td>");
+		document.write("<td>6</td>");
+		
+		document.write("<hr>");
+		
+		var tableTag = "";
+		tableTag += "<table border = '1'>";
+		tableTag += "<tr>";
+		tableTag += "<td>";
+		tableTag += num2;
+		tableTag += "</td>";
+		tableTag += "<td>2</td>";
+		tableTag +=  "</tr>;
+		
+	//3.  증감연산자 (++A, A++, --A, A--)
+	
+		var A = 100;
+	
+		document.write(++A);
+		document.write("<hr>");
+		document.write(A++);
+		document.write("<hr>");
+		document.write(A);1
+		document.write("<hr>");
+		
+		// 문자데이터
+		document.write("안녕하세요");
+		// document.write(" "안녕"하세요");		
+		document.write(" '안녕'하세요 "); //검은 글씨 변수 
+		document.write(' "안녕"하세요 '); 
+		document.write('안녕하세요');
+		//document.write("<table border='1'>");	
+		//document.write('<table border="1">');	
+		
+		//  4. 비교연산자 ( == != > < >= <= === !== )
+		//	=>  연산의 결과는 항상 boolean
+		
+		num1 = 100;
+		num2 = 200;
+		
+		document.write(" == " + (num1 == num2));
+		
+		// 바나나 37개
+		// 박스 크기 5
+		// 박스의 개수??
+
+		// 
+		
+		
+		
+	</script>
+</head>
+<body>
+	<h1>js1/test2.html</h1>
+	
+	<table border = "1">
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+	</tr>
+	
+	
+	
+	
+	
+	
+	</table>
+	
+	
+</body>
+</html>

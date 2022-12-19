@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.1.js"></script>
+<script type="text/javascript">
+   $(document).ready(function(){
+	   
+	   $.getJSON("testJson.jsp",function(data){
+		  
+		   alert("성공"+data);
+		   console.log(data);
+		   
+		   $('body').append("이름 : "+data.name + "<br>");
+		   $('body').append("나이 : "+data.age + "<br>");
+		   $('body').append("성별 : "+data.gender);
+		   
+	   });
+	   
+	   
+//   $.ajax({
+// 		   url :"testJson.jsp",
+// 		   dataType:"json",
+// 		   success:function(){
+// 			   alert("성공");
+// 		   },
+// 		   error:function(){
+// 			   alert("실패");
+// 		   }
+// 	   }); 
+   });
+
+</script>
+
+
+</head>
+<body>
+   <h1>json1.html</h1>
+   
+   
+   
+</body>
+</html>

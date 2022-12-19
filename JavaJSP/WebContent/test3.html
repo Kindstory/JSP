@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//  제어문 : 프로그램의 흐름을 제어하는 실행문
+	// (조건문, 반복문, 선택문)   // 제어문들 계속 사용해봐야 익숙해지지 머 모든게 그렇지만 ㅇㅇ 계속 써봐야지 ㅇㅇ
+
+	// 조건문 - if()문 : 조건문이 참일때만 실행;
+
+	// 	if(조건문){
+	// 		 실행문;
+	// 	}   // 실행문이 한 줄 일때는, { } 중괄호 생략가능 하지만, 이왕이면 걍 다 쓰는게 ㅇㅇ 배우는 단계인데 ㅇㅇ
+
+	// 	if(0){ // if조건문에 값을 넣는건 boolean조건에 값을 넣는거고  null, 0, undefined," "(공백문자) => false   // 문법이 디테일이지 ㅇㅇ
+	// 		alert("@@");
+	// 	} // 실행은 되는데 아무것도 안 나옴 console창도
+
+	// 	if(null){
+	// 		alert("s");
+	// 	}
+	// 	else if(undefined){
+	// 		alert("I got s")
+	// 	}
+
+	// 	if(1){
+	// 		alert("112");
+	// 	}
+
+	// 	// 변수의 절대값 계산해서 출력
+
+	// 	var num = -121; 
+
+	// 	if(num>0){
+	// 		// document.write("num(양수) : " +num);
+	// 	}
+
+	// 	if(num<0){
+	// 		// document.write("num(음수) : " +(-num));
+	// 		num = -num;
+	// 	}
+	// 		document.write("num : " + (num));    // 이런식으로 코드를 개선하는 연습 ㅇㅇ 출력문은 한 번만 해도 되니까 ㅇㅇ 공통된 속성이라.
+
+	// // 	alert(Math.abs(-9)); 
+	// // 	alert(Math.abs(num));
+
+	// 	document.write("<hr>");
+
+	// 	// 한줄로 처리하기(삼항연산자)
+
+	// 	document.write( num < 0 ? -num:num);   // 문법은 안 써먹으면 까먹음 다른 방법으로 써볼까 이렇게 고민해봐야함 ㅇㅇ
+
+	// 	document.write("<hr>");
+
+	// 	prompt("테스트", "1234");  // 기본 내장 함수
+
+	// 	var num = prompt("숫자를 입력하세요");
+	// 	alert(typeof num);
+	// " " 공백문자 아무것도 없다는 String	
+
+	// 	if(조건문){
+	// 		참 - 실행문1;
+	// 	}
+	// 	else{
+	// 		거짓 - 실행문2;
+	// 	}
+
+	// 	if(조건문)
+	// 	if(조건문)
+
+	// 	var num1 = 0;
+
+	// 	if(num1 % == 0){
+	// 		document.write("짝수입니다.");
+	// 	}
+	// 	else if(num1 % != 0){
+	// 		document.write("홀수입니다.");
+	// 	}
+
+	// 사용자 입력 - 현재 몇 월 인가?
+	// 3-5 봄, 6-8 여름, 9-11 가을, 12-2 겨울 출력
+
+	// 	var month = prompt("이번 달은 몇 월 인가요?", "6");
+
+	// 	if(month <= 5 && month >= 3){
+	// 		document.write("봄입니다.");
+	// 	}
+	// 	else if(month <= 8 && month >= 6){
+	// 		document.write("여름입니다.");
+	// 	}
+	// 	else if(month <= 11 && month >= 9){
+	// 		document.write("가을입니다.");
+	// 	}
+	// 	else if((month >= 1 && month <= 2) || month == 12){
+	// 		document.write("겨울입니다.");
+	// 	}
+	// 	else{
+	// 		document.write("잘못 입력하셨습니다.");
+	// 	}
+
+	// 	if(){
+	// 		실행문; - 실행가능한 모든 소스코드
+	// 		if(){
+	// 			// 중첩 if문  -> 위에만 만족하면 일단, 안쪽 if문이 실행됨.
+	// 		}
+	// 	}
+
+	// 	if( A && B ){
+	// 			// And연산은 조건이 둘 다 동시에 만족해야 실행이 됨.
+	// 	}
+
+	
+	
+	
+	// 로그인 처리 로직구현
+// 	var DBUserID = "Chris";
+// 	var DBUserPw = "1234";
+	// 1. 아이디 비밀번호 입력
+	// 2. 회원가입한 아이디와 입력한 아이디가 같은지 비교
+	// 3-1. 같을때
+	// 4. 비밀번호 비교
+	// 5-1. 같을떄
+	//     6. 로그인 성공
+	// 5-2. 다를떄
+	//     6. 로그인 실패("비밀번호가 잘못되었습니다!")
+	// 3-2. 다를때
+	// 4. 비밀번호 비교 할 필요 없이, 메시지 출력후 종료.("아이디가 다릅니다.")
+	
+	// 	var inputID = "haha";   // 이런 식으로 미리 넣고 비교해도 됨.
+	// 	var inputID = "12"; 
+
+// 	var ID = prompt("아이디를 입력해주세요.");
+
+// 	if (ID == DBUserID) {
+
+// 		var Pw = prompt("패스워드를 입력해주세요.");
+
+// 		if (Pw == DBUserPw) {
+// 			document.write("로그인 성공!");
+// 		}
+
+// 		else if (Pw != DBUserPw) {
+// 			document.write("비밀번호가 잘못되었습니다!");
+// 		}
+// 	}
+
+// 	else if (ID != DBUserID) {
+// 		document.write("아이디가 잘못 되었습니다.");
+// 	}
+	
+	//      A  &&  B  ||  C 
+	//      T      F    //  T    =   T  or은 트루임 값으로 굳이 따지면 ㅇㅇ 둘다 되지만 ㅇㅇ 일상에서는 ㅇㅇ 컴퓨터에서 값은 T임
+	
+	// 선택문
+	// switch문
+	
+// 	switch(변수(정수, 문자)){
+// 		case 값: 
+// 			실행문;   람다는 객체지향개념에서 함수를 도입한 거임. ㅇㅇ 
+// 			[break;]
+// 		case 값: 
+// 			실행문;
+// 			[break;]
+// 		case 값: 
+// 			실행문;
+// 			[break;]
+			
+// 		default:
+// 			 실행문;
+// 	}
+	
+	// 학생의 점수를 입력받아서 점수를 출력
+	// 100~90 - A, 89~80 - B, 79~70 - C, 69~60 - D, 59~0 - F 
+	
+	
+	
+	// case 자리에는 데이터 "값"만 넣을수 있음
+	// java는 기본적으로 int로 계산해서 99/10 하면 9.9에서 0.9날라감 근데 JS는 9.9까지 다 나옴
+	
+	// 십의 자리만 해서  case로 주면 됨.
+	// Math.floor(99/10) 
+	// F는 범위가 넓어서 그냥 default로 주면 됨.
+	
+	
+	
+	
+// 	var score = 89;
+	
+// 	var tmp = Math.floor(score/10);
+	
+// 	var grade = " ";
+// 		switch(tmp){
+		
+// 	case 10:
+// // 		alert("A");
+// // 		break;
+// 	case 9:
+// 		grade = "A";
+// 		break;
+// 	case 8:
+// 		grade = "B";
+// 		break;
+// 	case 7:
+// 		grade = "C";
+// 		break;
+// 	case 6:
+// 		grade = "D";
+// 		break;
+// 	default
+// 		grade = "F";
+	
+// 		}
+// 		alert(grade);
+	
+	
+	// 사용자 입력 => 이동할 페이지 정보
+	// (naver, 네이버, NAVER)
+	
+	// 페이지 이동
+	// location.href="주소"; 
+	//location.href = "https://www.naver.com";   // location.href는 JS 내장객체임    . 이 객체 호출 ㅇㅇ 자바랑 같음.
+//	alert("haha");
+	
+	//var input = "네이버";
+	
+	var input = "naver";
+	var url = "";
+	//input = "haha"
+	switch(input){
+	
+	case "naver":
+	case "NAVER":
+	case "네이버":
+		url = "www.tcpschool.com";
+		break;
+		
+	}
+	location.href = "https://"+url;
+	
+	
+	
+	
+	
+	
+	
+</script>
+</head>
+<body>
+	<h1>test3.html</h1>
+</body>
+</html>

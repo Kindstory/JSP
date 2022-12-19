@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+		
+	function changeColor(c){
+		window.document.bgColor = c;    // pink자리에 변수 ㅇㅇ 매개변수로 변수 받아오면 됨. 
+										// javascript는 타입없이 이름만 적어주면 됨 java는 타입까지 
+		
+	}
+
+</script>
+</head>
+<body>
+	<h1>test1-1.html</h1>
+	
+
+	<input type="button" value = "창 닫기1" onclick = " window.close(); "> 
+											<!-- 보고있는 창을 닫는거고 -->
+	<input type="button" value = "창 닫기2" onclick = " opener.window.close(); "> 
+										 <!-- 내가 열어준 대상의 창을 닫는다. -->
+										
+<!--   opener 객체는 새창의 부모창을 의미한다(새창을 만들어준 페이지)   -->
+			
+			
+<!-- 	회원 인증 로직임 이게 ㅇㅇ 새창 열려서 인증되거나 아님 그냥 그창에서 되거나 ㅇㅇ -->
+
+<!-- bgColor (window.document 배경색을 표시하는 속성) -->
+	<input type = "radio" name = "color" onclick = " changeColor('pink'); "> PINK
+	<input type = "radio" name = "color" onclick = " changeColor('orange'); "> ORANGE
+	<input type = "radio" name = "color" onclick = " changeColor('purple'); "> PURPLE
+	<input type = "radio" name = "color" onclick = " window.document.bgColor='pink'; "> PINK
+	<input type = "radio" name = "color" onclick = " window.document.bgColor='orange'; "> ORANGE
+	<input type = "radio" name = "color" onclick = " window.document.bgColor='purple'; "> PURPLE
+			
+</body>
+</html>

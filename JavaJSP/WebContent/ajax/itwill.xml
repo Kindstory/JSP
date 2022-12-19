@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<people>
+	<person>
+		<name>학생1</name>
+		<age>20</age>
+		<gender>남자</gender>
+	</person>
+	<person>
+		<name>학생2</name>
+		<age>25</age>
+		<gender>여자</gender>
+	</person>
+	<person>
+		<name>학생3</name>
+		<age>28</age>
+		<gender>남자</gender>
+	</person>
+
+</people>
+
+
+

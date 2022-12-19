@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function fun1(){
+		alert("fun1()");
+		
+		// 요소의 이름이 동일한경우 배열로 저장
+		// => 만들어진 순서에 따라서 순차적으로 접근
+		
+		// 라디오 버튼이 선택이 안된경우  submit 금지
+		if(document.forms[0].gender[0].checked == true){
+			alert("남");
+		}
+		if(document.forms[0].gender[1].checked == true){
+			alert("여");
+		}
+		
+		if(document.forms[0].hobby[0].checked == false &&
+				document.forms[0].hobby[1].checked == false &&
+				document.forms[0].hobby[2].checked == false){
+			
+			alert("취미를 선택하세요.");
+			return false;
+		}
+		
+		// select 유효성체크
+// 		if(document.forms[0].classNo.options[0].value == ""){
+// 			alert("강의장을 선택하세요");
+// 			return false;
+// 		}
+		
+		// document.forms[0].classNo.selectedIndex
+		// => select 태그 옵션중 선택된 요소의 인덱스값
+		
+		if(document.forms[0].classNo.options[document.forms[0].classNo.selectedIndex].value == ""){
+			alert("강의장을 선택하세요");
+			return false;
+		}
+// 		var sel = document.forms[0].classNo;
+		
+// 		if(sel.options[0].value==""){
+// 		}
+		
+		// document.forms[0].classNo.options[0].selected
+		// =>  select 태그 옵션중에 0번째 옵션이 선택여부 체크값
+// 		if(document.forms[0].classNo.options[0].selected == true){
+// 			alert("강의장을 선택하세요22");
+// 			return false;
+// 		}
+		
+		
+		
+		
+	}
+
+</script>
+</head>
+<body>
+  <h1>test4.html</h1>
+  
+  <fieldset>
+     <form action="" onsubmit="return fun1();">
+        아이디 : <input type="text" name="id"> <hr>
+        
+        성별 : <input type="radio" name="gender" value="남"  > 남 
+        		 <input type="radio" name="gender"  value="여"> 여
+        		 <hr>
+        취미 : 
+        	<input type="checkbox" name="hobby" value="게임">	게임
+        	<input type="checkbox" name="hobby" value="운동">	운동
+          	<input type="checkbox" name="hobby" value="여행">	여행
+          	<hr>
+        강의장 : 
+             <select name="classNo">
+                <option value="">강의장을 선택하세요.</option>
+                <option value="1강">1</option>
+                <option value="2강">2</option>
+                <option value="3강">3</option>
+             </select>  	 
+          	
+             
+         <input type="submit" value="전송">
+     
+     </form>
+  
+  </fieldset>
+  
+  
+  
+
+</body>
+</html>

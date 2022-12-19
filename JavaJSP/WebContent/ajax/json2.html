@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.1.js"></script>
+<script type="text/javascript">
+  $(function(){
+	 
+	  $.getJSON("testJson2.json",function(data){
+		  
+		  //alert(data);
+		  $(data).each(function(idx,item){
+			  
+			  $('body').append(idx+"/"+item.name+"<br>");
+			  $('body').append(idx+"/"+item.age+"<br>");
+			  $('body').append(idx+"/"+item.addr+"<br>");
+			  
+			  var name = item.name;
+			  $('#txt').val(name);
+			  
+		  });
+		  
+	  });
+	  
+	  
+  });
+
+</script>
+
+
+</head>
+<body>
+   <h1>json2.html</h1>
+   <input type="text" id="txt">
+</body>
+</html>

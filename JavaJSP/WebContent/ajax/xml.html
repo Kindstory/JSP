@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+    	// ajax 사용해서  itwill.xml 파일의 정보를 가져오기, 출력
+    	
+    	$.ajax({
+    		url : "itwill.xml",
+    		success:function(data){
+    			alert("성공");
+    			//alert(data);
+    			console.log(data);
+    			//$('body').append(data);
+    			
+    			$(data).find('person').each(function(){
+    				 var name = $(this).find('name').text();
+    				 var age = $(this).find('age').text();
+    				 var gender = $(this).find('gender').text();
+    				
+    				 $('body').append("이름 : "+name+"<br>");
+    				 $('body').append("나이 : "+age+"<br>");
+    				 $('body').append("성별 : "+gender+"<br>");
+    				
+    			});
+    			
+    			
+    		}
+    	});//ajax
+    	
+    	
+    });//jquery
+
+</script>
+
+</head>
+<body>
+   <h1>xml.html</h1>
+   
+   
+   
+</body>
+</html>
